@@ -16,8 +16,9 @@ CS50x is an entry-level course offered by Harvard University that covers a wide 
 ## Technologies Used
 
 - C
-- Python
 - SQL
+- Python
+- Flask
 - HTML/CSS
 - JavaScript
 - CS50 Library
