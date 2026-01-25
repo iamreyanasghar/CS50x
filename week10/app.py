@@ -289,7 +289,7 @@ def profile_post():
     
     return redirect("/profile")
 
-
+# AI generated route
 @app.route("/api/user-info")
 @login_required
 def user_info():

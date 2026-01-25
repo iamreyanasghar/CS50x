@@ -1,5 +1,7 @@
 # Personal Finance Tracker
 
+Video Link: [Personal Finance Tracker](https://youtu.be/-PupXPhkV18)
+
 A comprehensive web-based personal finance management application built with Flask that empowers users to take complete control of their financial health. This modern finance tracker combines intuitive design with powerful features to provide a clean and efficient financial management experience.
 
 ## 🌟 Key Features
