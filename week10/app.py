@@ -6,7 +6,7 @@ from flask import Flask, flash, redirect, render_template, request, session, jso
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, usd
+from helpers import apology, login_required, usd, init_database
 
 # Configure application
 app = Flask(__name__)
@@ -20,37 +20,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
-
-# Create tables if they don't exist
-db.execute("""
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT NOT NULL UNIQUE,
-        display_name TEXT NOT NULL,
-        hash TEXT NOT NULL
-    )
-""")
-
-# Add new columns if they don't exist (for existing databases)
-try:
-    db.execute("ALTER TABLE users ADD COLUMN display_name TEXT DEFAULT 'User'")
-except:
-    pass
-
-db.execute("""
-    CREATE TABLE IF NOT EXISTS transactions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        title TEXT NOT NULL,
-        type TEXT NOT NULL,
-        category TEXT NOT NULL,
-        amount REAL NOT NULL,
-        description TEXT,
-        date TEXT NOT NULL,
-        FOREIGN KEY(user_id) REFERENCES users(id)
-    )
-""")
+db = init_database("finance.db")
 
 
 @app.after_request
